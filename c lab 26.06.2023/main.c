@@ -1,140 +1,127 @@
 #include <stdio.h>
-#include <stdlib.h>
+#include <math.h>
 
 int main()
 {
-    //Practical 5
-     //4
-    int n,sum=0;
-    printf("Enter a number ");
-    scanf("%d",&n);
-    while(n!=0)
-    {
-        sum+=n%10;
-        n/=10;
+    // practical 1
+    //1
+    int n1,n2,max;
+    printf("Enter two numbers ");
+    scanf("%d %d",&n1,&n2);
+    if(n1>n2)
+    max=n1;
+    else
+    max=n2;
+    printf("The highest number %d \n",max);
+
+    //2
+    int num1,num2,num3,large,smalle;
+    printf("Enter three numbers ");
+    scanf("%d %d %d",&num1,&num2,&num3);
+    large=num1;
+    smalle=num1;
+    if(num2>large)
+    large=num2;
+    if(num3>large)
+    large=num3;
+    if(num2<smalle)
+    smalle=num2;
+    if(num3<smalle)
+    smalle=num3;
+    printf("The largest number is %d \n",large);
+    printf("The smallest number is %d \n",smalle);
+
+    //3
+    char empname[20];
+    float bs,inc,ns;
+    printf("Enter employee name ");
+    scanf(" %s",&empname);
+    printf("Enter basic salary ");
+    scanf("%f",&bs);
+    if(bs<=5000)
+    inc=0.05*bs;
+    else if (5000<=bs<10000)
+    inc=0.1*bs;
+    else{
+    inc=0.15*bs;
     }
-    printf("Sum of digits: %d\n",sum);
+    ns=bs+inc;
+    printf("Employee name %s \n",empname);
+    printf("New salary %.2f \n",ns);
+
+    //4
+    double r,d,c,a;
+    double PI=M_PI;
+    printf("Enter the radius of a circle ");
+    scanf("%lf",&r);
+    d=2*r;
+    c=2*PI*r;
+    a=PI*r*r;
+    printf("diameter: %.2f \n",d);
+    printf("circumference: %.2f \n",c);
+    printf("area: %.2f \n",a);
 
     //5
-    int n,rno=0;
-    printf("Enter a number ");
-    scanf("%d",&n);
-    do {
-        int digit=n%10;
-        rno=rno*10+digit;
-        n/=10;
-    } while (n!= 0);
-    printf("Reversed number: %d\n",rno);
+    int number1,number2;
+    printf("Enter two numbers ");
+    scanf("%d %d",&number1,&number2);
+    if(number1!=0 && number1%number2==0)
+    printf("%d is a multiple of %d \n",number1,number2);
+    else
+    printf("%d is not a multiple of %d \n",number1,number2);
 
     //6
-    int count, power, base, result=1;
-    printf ("Enter the base value ");
-    scanf ("%d",&base);
-    printf ("Enter the power value ");
-    scanf ("%d",&power);
-    for (count=1; count<=power;count++)
-    {
-       result=result*base;
-    }
-    printf("Value is %d",result);
+    printf("%d\n",'A');
+    printf("%d\n",'B');
+    printf("%d\n",'C');
+    printf("%d\n",'a');
+    printf("%d\n",'b');
+    printf("%d\n",'c');
+    printf("%d\n",'0');
+    printf("%d\n",'1');
+    printf("%d\n",'2');
+    printf("%d\n",'$');
+    printf("%d\n",'*');
+    printf("%d\n",'+');
+    printf("%d\n",'/');
 
     //7
-    int num1=0,num2=1,n,count;
-
-    printf("Fibonacci Sequence ");
-
-    for (count=0;count<10;count++) {
-        if (count<=1) {
-            n=count;
-        } else
-        {
-            n=num1+num2;
-            num1=num2;
-            num2=n;
-        }
-        printf("%d",n);
-    }
-
-    //8
-    int no,mod,total=0,x;
-    printf("Enter the number ");
-    scanf("%d",&no);
-    x=no;
-    while(no)
+    char name[20],city;
+    float b_salary,service_years,m_sales,a_allowance,bonus,g_remuneration ;
+    printf("Enter the sales persons name: ");
+    scanf("%s",&name);
+    printf("Enter the basic salary: ");
+    scanf("%f",&b_salary);
+    printf("service years: ");
+    scanf("%f",&service_years);
+    printf("Enter the city: ");
+    scanf("%s",&city);
+    printf("Enter the monthly sales: ");
+    scanf("%f",&m_sales);
+    if(m_sales>=50000)
     {
-        mod=no%10;
-        total=total+(mod*mod*mod);
-        no=no/10;
+     bonus = 0.15* m_sales;
     }
-    printf("%d",no);
-    if(x==total)
-       printf("%d is a armstrong number ",x);
+    else if (m_sales<=25000)
+    {
+     bonus = 0.1* m_sales;
+    }
     else
-       printf("%d is not a armstrong number ",x);
-
-    //9
-    char letter;
-    printf("ASCII values for letters A to Z \n");
-    for (letter='A';letter<='Z';letter++)
     {
-        printf("%c %d\n",letter,letter);
+     bonus = 0.12* m_sales;
     }
-
-     //10
-     int rows;
-     printf("Enter the number of row ");
-     scanf("%d",&rows);
-     for(int x=1;x<=rows;x++)
-     {
-         for(int y=1;y<=x;y++)
-         {
-             printf("*");
-         }
-         printf("\n");
-     }
-
-    //11
-    int no,count=2,prime=1;
-    printf("Enter a number ");
-    scanf("%d",&no);
-    while(count<no)
+    switch(city)
     {
-        if(no%count==0)
+        case'c':a_allowance = 2500;break;
+        default:a_allowance = 0;
+    }
+    service_years=5;
+    if(service_years>5)
     {
-        prime=0;
-        break;
+      a_allowance = 0.1*b_salary;
     }
+    g_remuneration = b_salary + a_allowance + bonus;
+    printf("gross remuneration : %.2f" ,g_remuneration);
 
-        count++;
-    }
-    if(prime)
-        printf("%d is a prime number",no);
-    else
-        printf("%d is not a prime number",no);
-
-    //12
-    int no,count=1;
-    printf("Enter a number ");
-    scanf("%d",&no);
-    printf("Factors of %d \n",no);
-    while(count<=no)
-    {
-        if(no%count==0)
-        {
-            printf("%d \n",count);
-        }
-        count++;
-    }
-
-    //12
-    int sum,x;
-    while(x>0){
-    printf("Enter a number ");
-    scanf("%d",&x);
-    if(x!=1)
-    sum=sum+x;
-    }
-    printf("Sum of the entered  numbers %d ",sum);
     return 0;
 }
-
